@@ -1,24 +1,24 @@
-import { Box, Flex, Input, Button } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { FC, useState } from "react";
-import { useSWRConfig } from "swr";
-import NextImage from "next/image";
-import { auth } from "../lib/mutations";
+import { Box, Flex, Input, Button } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { FC, useState } from 'react'
+import { useSWRConfig } from 'swr'
+import NextImage from 'next/image'
+import { auth } from '../lib/mutations'
 
-const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
-    await auth(mode, { email, password });
-    setIsLoading(false);
-    router.push("/");
-  };
+    await auth(mode, { email, password })
+    setIsLoading(false)
+    router.push('/')
+  }
 
   return (
     <Box height="100vh" width="100vw" bg="black" color="white">
@@ -48,8 +48,8 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
               bg="green.500"
               isLoading={isLoading}
               sx={{
-                "&:hover": {
-                  bg: "green.300",
+                '&:hover': {
+                  bg: 'green.300',
                 },
               }}
             >
@@ -59,7 +59,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
         </Box>
       </Flex>
     </Box>
-  );
-};
+  )
+}
 
-export default AuthForm;
+export default AuthForm
